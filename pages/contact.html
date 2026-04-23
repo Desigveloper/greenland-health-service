@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | GreenLand Health Service</title>
+  <meta name="description" content="Reach out to GreenLand Health Service for inquiries, partnerships, or questions about our enterprise occupational health programs." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/pages.css" />
+  <style>
+    .btn-spinner {
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      display: inline-block;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .char-counter {
+      font-size: .78rem;
+      color: var(--clr-text-muted);
+      text-align: right;
+      margin-top: 4px;
+    }
+    .success-alert {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 20px 24px;
+      background: var(--clr-primary-pale);
+      border: 1.5px solid var(--clr-primary-light);
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+    }
+    .success-alert-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .success-alert h4 { font-size: 1rem; margin-bottom: 4px; color: var(--clr-primary-dark); }
+    .success-alert p  { font-size: .88rem; color: var(--clr-primary); }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo" aria-label="GreenLand Home">
+      <div class="logo-mark">🌿</div>
+      <div class="logo-text"><span class="logo-name">GreenLand</span><span class="logo-tagline">HEALTH SERVICE</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html"        class="nav-link">Home</a></li>
+      <li><a href="about.html"        class="nav-link">About</a></li>
+      <li><a href="services.html"     class="nav-link">Services</a></li>
+      <li><a href="consultation.html" class="nav-link">Consultation</a></li>
+      <li><a href="contact.html"      class="nav-link active">Contact</a></li>
+    </ul>
+    <a href="consultation.html" class="btn btn--primary nav-cta">Request Consultation</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navDrawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="../index.html"        class="nav-link">Home</a>
+  <a href="about.html"        class="nav-link">About</a>
+  <a href="services.html"     class="nav-link">Services</a>
+  <a href="consultation.html" class="nav-link">Consultation</a>
+  <a href="contact.html"      class="nav-link active">Contact</a>
+  <a href="consultation.html" class="btn btn--primary">Request Consultation</a>
+</div>
+
+<!-- HERO -->
+<header class="page-hero">
+  <div class="container">
+    <span class="section-eyebrow section-eyebrow--accent">CONTACT US</span>
+    <h1>We're here to <span class="highlight">support your team.</span></h1>
+    <p>Reach out for general inquiries, partnerships, or questions about our occupational healthcare programs. We typically respond within one business day.</p>
+  </div>
+</header>
+
+<!-- CONTACT SECTION -->
+<section class="section bg-surface" aria-label="Contact information and form">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- INFO COLUMN -->
+      <div>
+        <div class="contact-info-list">
+
+          <div class="contact-info-card fade-in">
+            <div class="ci-icon" aria-hidden="true">📧</div>
+            <div class="ci-body">
+              <h3>Email</h3>
+              <a href="mailto:contact@greenlandhealth.com">contact@greenlandhealth.com</a>
+              <p class="ci-sub">General inquiries</p>
+            </div>
+          </div>
+
+          <div class="contact-info-card fade-in fade-in-delay-1">
+            <div class="ci-icon" aria-hidden="true">📞</div>
+            <div class="ci-body">
+              <h3>Phone</h3>
+              <a href="tel:+15550102030">+1 (555) 010-2030</a>
+              <p class="ci-sub">Mon–Fri, 8:00 – 18:00 local time</p>
+            </div>
+          </div>
+
+          <div class="contact-info-card fade-in fade-in-delay-2">
+            <div class="ci-icon" aria-hidden="true">📍</div>
+            <div class="ci-body">
+              <h3>Headquarters</h3>
+              <p>100 Corporate Plaza, Suite 1200</p>
+              <p class="ci-sub">Business District</p>
+            </div>
+          </div>
+
+          <div class="contact-info-card fade-in fade-in-delay-3">
+            <div class="ci-icon" aria-hidden="true">🕐</div>
+            <div class="ci-body">
+              <h3>Business Hours</h3>
+              <p>Mon–Fri, 8:00 – 18:00</p>
+              <p class="ci-sub">Local time</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="confidential-strip fade-in" style="margin-top:16px;">
+          <span aria-hidden="true">🔒</span>
+          <span>All correspondence is handled with strict confidentiality and aligned with international data protection standards.</span>
+        </div>
+      </div>
+
+      <!-- FORM COLUMN -->
+      <div class="contact-form-card fade-in">
+
+        <!-- Success alert (hidden until form submitted) -->
+        <div id="contactSuccess" class="success-alert" hidden>
+          <span class="success-alert-icon">✅</span>
+          <div>
+            <h4>Message sent successfully!</h4>
+            <p>We'll get back to you within one business day. <button id="contactRetry" class="btn btn--ghost btn--sm" style="padding:0;font-size:.88rem;">Send another →</button></p>
+          </div>
+        </div>
+
+        <h2>Send us a message</h2>
+        <p class="sub">We typically respond within one business day.</p>
+
+        <form id="contactForm" novalidate aria-label="Contact message form">
+
+          <div class="contact-form-grid">
+            <div class="form-group">
+              <label class="form-label" for="contactName">Full Name <span class="req">*</span></label>
+              <input class="form-control" type="text" id="contactName" name="name"
+                placeholder="Jane Doe" autocomplete="name" />
+              <span class="field-error" id="contactNameErr" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contactCompany">Company</label>
+              <input class="form-control" type="text" id="contactCompany" name="company"
+                placeholder="Company name" autocomplete="organization" />
+              <span class="field-error" id="contactCompanyErr" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contactEmail">Email <span class="req">*</span></label>
+              <input class="form-control" type="email" id="contactEmail" name="email"
+                placeholder="you@company.com" autocomplete="email" />
+              <span class="field-error" id="contactEmailErr" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contactPhone">Phone</label>
+              <input class="form-control" type="tel" id="contactPhone" name="phone"
+                placeholder="+1 555 010 2030" autocomplete="tel" />
+              <span class="field-error" id="contactPhoneErr" role="alert"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contactSubject">Subject <span class="req">*</span></label>
+            <input class="form-control" type="text" id="contactSubject" name="subject"
+              placeholder="How can we help?" />
+            <span class="field-error" id="contactSubjectErr" role="alert"></span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contactMessage">Message <span class="req">*</span></label>
+            <textarea class="form-control form-control--textarea" id="contactMessage" name="message"
+              placeholder="Tell us a bit about your inquiry…"></textarea>
+            <div class="char-counter" id="charCount" aria-live="polite">0 / 1000</div>
+            <span class="field-error" id="contactMessageErr" role="alert"></span>
+          </div>
+
+          <button type="submit" id="contactSubmit" class="btn btn--primary btn--lg btn--full">
+            Send Message <span aria-hidden="true">✉️</span>
+          </button>
+
+        </form>
+      </div><!-- /form card -->
+
+    </div><!-- /layout -->
+
+    <!-- MAP PLACEHOLDER -->
+    <div class="map-section fade-in" aria-label="Office location">
+      <p style="font-size:.82rem;color:var(--clr-text-muted);margin-bottom:16px;">OUR LOCATION</p>
+      <div class="map-pin-card">
+        <span aria-hidden="true">📍</span>
+        <span>GreenLand HQ — 100 Corporate Plaza, Suite 1200</span>
+      </div>
+      <p style="margin-top:16px;font-size:.88rem;color:var(--clr-text-muted);">Available for in-person meetings by appointment. We also offer video consultations globally.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-inner fade-in">
+      <div>
+        <h2>Prefer a direct consultation? <span class="highlight">Let's talk.</span></h2>
+        <p>Skip the form — request a senior-led consultation directly.</p>
+      </div>
+      <a href="consultation.html" class="btn btn--primary btn--lg">Request Consultation →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="nav-logo"><div class="logo-mark">🌿</div><div class="logo-text"><span class="logo-name">GreenLand</span><span class="logo-tagline">HEALTH SERVICE</span></div></a>
+        <p class="footer-desc">Enterprise occupational healthcare, workforce wellness, and compliance consulting — aligned with international standards.</p>
+        <div class="social-row"><a href="#" class="social-btn" aria-label="LinkedIn">in</a><a href="#" class="social-btn" aria-label="X">𝕏</a><a href="#" class="social-btn" aria-label="Facebook">f</a></div>
+      </div>
+      <div class="footer-col"><h5>Company</h5><ul><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h5>Services</h5><ul><li><a href="services.html#occupational">Occupational Health</a></li><li><a href="services.html#wellness">Workforce Wellness</a></li><li><a href="services.html#compliance">Compliance Support</a></li><li><a href="services.html#consulting">Health Consulting</a></li></ul></div>
+      <div class="footer-col"><h5>Get in Touch</h5><ul><li><span>📧 contact@greenlandhealth.com</span></li><li><span>📞 +1 (555) 010-2030</span></li><li><span>📍 100 Corporate Plaza, Suite 1200</span></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span class="js-year">2026</span> GreenLand Health Service. All rights reserved.</p>
+      <nav class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Compliance</a></nav>
+    </div>
+  </div>
+</footer>
+
+<div id="toast" role="alert" aria-live="polite"></div>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/contact.js"></script>
+</body>
+</html>

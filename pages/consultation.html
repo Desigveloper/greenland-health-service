@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request Consultation | GreenLand Health Service</title>
+  <meta name="description" content="Let's design an occupational health program built for your workforce. Fill in your details and a senior GreenLand consultant will respond within one business day." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/pages.css" />
+  <style>
+    .btn-spinner {
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      display: inline-block;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .success-panel {
+      text-align: center;
+      padding: 56px 32px;
+    }
+    .success-panel .success-icon { font-size: 4rem; margin-bottom: 16px; }
+    .success-panel h2 { font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 12px; }
+    .success-panel p { color: var(--clr-text-muted); margin-bottom: 28px; }
+    .progress-bar-wrap { height: 4px; background: var(--clr-gray-100); border-radius: 99px; margin-bottom: 32px; overflow: hidden; }
+    #progressFill { height: 100%; background: linear-gradient(90deg, var(--clr-primary), var(--clr-primary-light)); border-radius: 99px; width: 0; transition: width .5s var(--ease); }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo" aria-label="GreenLand Home">
+      <div class="logo-mark">🌿</div>
+      <div class="logo-text"><span class="logo-name">GreenLand</span><span class="logo-tagline">HEALTH SERVICE</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html"        class="nav-link">Home</a></li>
+      <li><a href="about.html"        class="nav-link">About</a></li>
+      <li><a href="services.html"     class="nav-link">Services</a></li>
+      <li><a href="consultation.html" class="nav-link active">Consultation</a></li>
+      <li><a href="contact.html"      class="nav-link">Contact</a></li>
+    </ul>
+    <a href="consultation.html" class="btn btn--primary nav-cta">Request Consultation</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navDrawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="../index.html"        class="nav-link">Home</a>
+  <a href="about.html"        class="nav-link">About</a>
+  <a href="services.html"     class="nav-link">Services</a>
+  <a href="consultation.html" class="nav-link active">Consultation</a>
+  <a href="contact.html"      class="nav-link">Contact</a>
+  <a href="consultation.html" class="btn btn--primary">Request Consultation</a>
+</div>
+
+<!-- HERO -->
+<header class="page-hero">
+  <div class="container">
+    <span class="section-eyebrow section-eyebrow--accent">REQUEST CONSULTATION</span>
+    <h1>Let's design an occupational health program <span class="highlight">built for your workforce.</span></h1>
+    <p>Tell us about your organisation and goals. A senior GreenLand consultant will respond within one business day with next steps.</p>
+  </div>
+</header>
+
+<!-- FORM SECTION -->
+<section class="section bg-surface" aria-label="Consultation request form">
+  <div class="container">
+    <div class="consultation-layout">
+
+      <!-- FORM CARD -->
+      <div class="consultation-form-wrap">
+
+        <!-- Success panel (hidden by default) -->
+        <div id="consultSuccess" class="success-panel" hidden>
+          <div class="success-icon">✅</div>
+          <h2>Request submitted!</h2>
+          <p>Thank you — a senior GreenLand consultant will contact you within one business day to discuss your program.</p>
+          <a href="../index.html" class="btn btn--primary">Back to Home</a>
+        </div>
+
+        <!-- Multi-step form -->
+        <form id="consultationForm" novalidate aria-label="Consultation request multi-step form">
+
+          <!-- Step indicators -->
+          <div class="step-bar" role="tablist" aria-label="Form progress">
+            <div class="step-item active" role="tab" aria-selected="true"  aria-label="Step 1: Your Details">
+              <div class="step-circle" aria-hidden="true">1</div>
+              <span>Your Details</span>
+            </div>
+            <div class="step-connector" aria-hidden="true"></div>
+            <div class="step-item" role="tab" aria-selected="false" aria-label="Step 2: Organisation">
+              <div class="step-circle" aria-hidden="true">2</div>
+              <span>Organisation</span>
+            </div>
+            <div class="step-connector" aria-hidden="true"></div>
+            <div class="step-item" role="tab" aria-selected="false" aria-label="Step 3: Your Needs">
+              <div class="step-circle" aria-hidden="true">3</div>
+              <span>Your Needs</span>
+            </div>
+          </div>
+
+          <!-- Progress bar -->
+          <div class="progress-bar-wrap" aria-hidden="true"><div id="progressFill"></div></div>
+
+          <!-- STEP 1: Personal -->
+          <div class="form-panel active" id="panel1" role="tabpanel" aria-labelledby="step1-label">
+            <h2 style="font-size:1.2rem;margin-bottom:6px;">Your Details</h2>
+            <p style="font-size:.88rem;color:var(--clr-text-muted);margin-bottom:24px;">Tell us who you are and how to reach you.</p>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label" for="consultFullName">Full Name <span class="req">*</span></label>
+                <input class="form-control" type="text" id="consultFullName" name="full_name" placeholder="Jane Doe" autocomplete="name" />
+                <span class="field-error" id="consultFullNameErr" role="alert"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="consultRole">Role / Title <span class="req">*</span></label>
+                <input class="form-control" type="text" id="consultRole" name="role" placeholder="HR Director" autocomplete="organization-title" />
+                <span class="field-error" id="consultRoleErr" role="alert"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="consultEmail">Work Email <span class="req">*</span></label>
+                <input class="form-control" type="email" id="consultEmail" name="email" placeholder="jane@company.com" autocomplete="email" />
+                <span class="field-error" id="consultEmailErr" role="alert"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="consultPhone">Phone <span style="color:var(--clr-text-muted);font-weight:400;">(optional)</span></label>
+                <input class="form-control" type="tel" id="consultPhone" name="phone" placeholder="+1 555 010 2030" autocomplete="tel" />
+                <span class="field-error" id="consultPhoneErr" role="alert"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2: Organisation -->
+          <div class="form-panel" id="panel2" role="tabpanel" aria-labelledby="step2-label">
+            <h2 style="font-size:1.2rem;margin-bottom:6px;">Your Organisation</h2>
+            <p style="font-size:.88rem;color:var(--clr-text-muted);margin-bottom:24px;">Help us understand your organisation's context.</p>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label" for="consultOrg">Organisation Name <span class="req">*</span></label>
+                <input class="form-control" type="text" id="consultOrg" name="org" placeholder="Acme Corporation" autocomplete="organization" />
+                <span class="field-error" id="consultOrgErr" role="alert"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="consultCountry">Country / Region <span class="req">*</span></label>
+                <input class="form-control" type="text" id="consultCountry" name="country" placeholder="United States" autocomplete="country-name" />
+                <span class="field-error" id="consultCountryErr" role="alert"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="consultIndustry">Industry <span class="req">*</span></label>
+                <select class="form-control" id="consultIndustry" name="industry">
+                  <option value="">Select your industry…</option>
+                  <option value="mining">Mining &amp; Resources</option>
+                  <option value="manufacturing">Manufacturing</option>
+                  <option value="logistics">Logistics &amp; Transport</option>
+                  <option value="construction">Construction</option>
+                  <option value="healthcare">Healthcare</option>
+                  <option value="finance">Financial Services</option>
+                  <option value="tech">Technology</option>
+                  <option value="energy">Energy &amp; Utilities</option>
+                  <option value="retail">Retail &amp; FMCG</option>
+                  <option value="other">Other</option>
+                </select>
+                <span class="field-error" id="consultIndustryErr" role="alert"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="consultSize">Company Size <span class="req">*</span></label>
+                <select class="form-control" id="consultSize" name="size">
+                  <option value="">Select size…</option>
+                  <option value="50-200">50 – 200 employees</option>
+                  <option value="200-500">200 – 500 employees</option>
+                  <option value="500-2000">500 – 2,000 employees</option>
+                  <option value="2000-10000">2,000 – 10,000 employees</option>
+                  <option value="10000+">10,000+ employees</option>
+                </select>
+                <span class="field-error" id="consultSizeErr" role="alert"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 3: Needs -->
+          <div class="form-panel" id="panel3" role="tabpanel" aria-labelledby="step3-label">
+            <h2 style="font-size:1.2rem;margin-bottom:6px;">Your Needs</h2>
+            <p style="font-size:.88rem;color:var(--clr-text-muted);margin-bottom:24px;">Tell us what you're looking for and your timeline.</p>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label" for="consultServices">Primary Service Interest <span class="req">*</span></label>
+                <select class="form-control" id="consultServices" name="services">
+                  <option value="">Select a service…</option>
+                  <option value="occupational">Occupational Health Programs</option>
+                  <option value="wellness">Workforce Wellness Solutions</option>
+                  <option value="compliance">Compliance Support</option>
+                  <option value="consulting">Health Management Consulting</option>
+                  <option value="all">All Services / Full Package</option>
+                </select>
+                <span class="field-error" id="consultServicesErr" role="alert"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="consultTimeline">Implementation Timeline <span class="req">*</span></label>
+                <select class="form-control" id="consultTimeline" name="timeline">
+                  <option value="">Select timeline…</option>
+                  <option value="asap">As soon as possible</option>
+                  <option value="1-3months">1 – 3 months</option>
+                  <option value="3-6months">3 – 6 months</option>
+                  <option value="6-12months">6 – 12 months</option>
+                  <option value="planning">Just planning ahead</option>
+                </select>
+                <span class="field-error" id="consultTimelineErr" role="alert"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="consultNeeds">Additional Information <span class="req">*</span></label>
+              <textarea class="form-control form-control--textarea" id="consultNeeds" name="needs" placeholder="Tell us about your specific challenges, current setup, and any particular requirements…"></textarea>
+              <span class="field-error" id="consultNeedsErr" role="alert"></span>
+            </div>
+          </div>
+
+          <!-- Navigation -->
+          <div class="form-nav">
+            <button type="button" id="backBtn" class="form-nav-back" style="display:none;" aria-label="Go to previous step">← Back</button>
+            <button type="button" id="nextBtn" class="btn btn--primary" aria-label="Go to next step">Continue →</button>
+            <button type="submit"  id="submitBtn" class="btn btn--primary" style="display:none;" aria-label="Submit consultation request">Submit Request →</button>
+          </div>
+
+        </form>
+      </div><!-- /form-wrap -->
+
+      <!-- TRUST SIDEBAR -->
+      <aside class="trust-sidebar" aria-label="Why GreenLand">
+        <div class="trust-hero-card">
+          <span class="section-eyebrow section-eyebrow--accent">WHY GREENLAND</span>
+          <h3>Trusted by 120+ enterprises across regulated industries.</h3>
+        </div>
+        <div class="trust-items">
+          <div class="trust-item">
+            <div class="trust-item-icon" aria-hidden="true">🔒</div>
+            <div class="trust-item-text">
+              <h4>Confidential</h4>
+              <p>All requests are protected and used only to scope your engagement.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-item-icon" aria-hidden="true">⏱️</div>
+            <div class="trust-item-text">
+              <h4>24-hour response</h4>
+              <p>A GreenLand specialist will reach out within one business day.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-item-icon" aria-hidden="true">👨‍⚕️</div>
+            <div class="trust-item-text">
+              <h4>Senior consultant</h4>
+              <p>Your initial consultation is led by a senior healthcare advisor.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-item-icon" aria-hidden="true">🤝</div>
+            <div class="trust-item-text">
+              <h4>No obligation</h4>
+              <p>Discovery calls are complimentary — no pressure, no commitment.</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="nav-logo"><div class="logo-mark">🌿</div><div class="logo-text"><span class="logo-name">GreenLand</span><span class="logo-tagline">HEALTH SERVICE</span></div></a>
+        <p class="footer-desc">Enterprise occupational healthcare, workforce wellness, and compliance consulting — aligned with international standards.</p>
+        <div class="social-row"><a href="#" class="social-btn" aria-label="LinkedIn">in</a><a href="#" class="social-btn" aria-label="X">𝕏</a><a href="#" class="social-btn" aria-label="Facebook">f</a></div>
+      </div>
+      <div class="footer-col"><h5>Company</h5><ul><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h5>Services</h5><ul><li><a href="services.html#occupational">Occupational Health</a></li><li><a href="services.html#wellness">Workforce Wellness</a></li><li><a href="services.html#compliance">Compliance Support</a></li><li><a href="services.html#consulting">Health Consulting</a></li></ul></div>
+      <div class="footer-col"><h5>Get in Touch</h5><ul><li><span>📧 contact@greenlandhealth.com</span></li><li><span>📞 +1 (555) 010-2030</span></li><li><span>📍 100 Corporate Plaza, Suite 1200</span></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span class="js-year">2026</span> GreenLand Health Service. All rights reserved.</p>
+      <nav class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Compliance</a></nav>
+    </div>
+  </div>
+</footer>
+
+<div id="toast" role="alert" aria-live="polite"></div>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/consultation.js"></script>
+</body>
+</html>
