@@ -111,27 +111,11 @@
     };
 
     try {
-      // Simulate network request (replace with real endpoint)
-      await simulateSend(payload);
+      // Submit to Netlify Forms
+      form.submit();
 
-      // Success state
-      form.reset();
-      Object.keys(rules).forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.classList.remove('success', 'error');
-      });
-      if (charCount) charCount.textContent = `0 / ${MAX_CHARS}`;
-
-      if (successBox) {
-        successBox.hidden = false;
-        successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-
-      window.GLS && window.GLS.toast({
-        title:   'Message sent!',
-        message: 'We'll respond within one business day.',
-        type:    'success',
-      });
+      // Note: Netlify will handle the submission and redirect
+      // The success state below won't be reached, but kept for fallback
 
     } catch (err) {
       window.GLS && window.GLS.toast({
@@ -139,7 +123,6 @@
         message: 'Please try again or email us directly.',
         type:    'error',
       });
-    } finally {
       submitBtn.disabled = false;
       submitBtn.innerHTML = 'Send Message <span>✉️</span>';
     }

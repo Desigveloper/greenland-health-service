@@ -86,7 +86,9 @@
         </div>
 
         <!-- Multi-step form -->
-        <form id="consultationForm" novalidate aria-label="Consultation request multi-step form">
+        <form id="consultationForm" method="POST" data-netlify="true" novalidate aria-label="Consultation request multi-step form">
+          <input type="hidden" name="form-name" value="consultation" />
+          <div name="bot-field" style="display:none;"></div>
 
           <!-- Step indicators -->
           <div class="step-bar" role="tablist" aria-label="Form progress">

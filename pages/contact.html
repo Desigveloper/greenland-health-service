@@ -147,7 +147,9 @@
         <h2>Send us a message</h2>
         <p class="sub">We typically respond within one business day.</p>
 
-        <form id="contactForm" novalidate aria-label="Contact message form">
+        <form id="contactForm" method="POST" data-netlify="true" novalidate aria-label="Contact message form">
+          <input type="hidden" name="form-name" value="contact" />
+          <div name="bot-field" style="display:none;"></div>
 
           <div class="contact-form-grid">
             <div class="form-group">

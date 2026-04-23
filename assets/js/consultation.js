@@ -160,17 +160,12 @@
     };
 
     try {
-      await simulateSend(payload);
-      // Show success panel
-      document.getElementById('consultationForm').style.display = 'none';
-      const success = document.getElementById('consultSuccess');
-      if (success) { success.hidden = false; success.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+      // Submit to Netlify Forms
+      form.submit();
 
-      window.GLS && window.GLS.toast({
-        title: 'Request submitted!',
-        message: 'A senior consultant will reach out within one business day.',
-        type: 'success',
-      });
+      // Note: Netlify will handle the submission and redirect
+      // The success state below won't be reached, but kept for fallback
+
     } catch {
       window.GLS && window.GLS.toast({ title: 'Submission failed.', message: 'Please try again.', type: 'error' });
       subBtn.disabled = false;

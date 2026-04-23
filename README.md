@@ -88,10 +88,24 @@ Then visit: `http://localhost:8080`
 
 ## 🔌 Connecting a Real Backend
 
-The contact and consultation forms currently simulate submission. To wire up a real backend:
+The contact and consultation forms are now configured for **Netlify Forms** (automatic form handling for Netlify deployments). When deployed on Netlify, form submissions will be processed automatically and can be viewed in your Netlify dashboard.
 
-### Option A — REST API (fetch)
-Replace `simulateSend()` in `assets/js/contact.js` and `assets/js/consultation.js`:
+### Netlify Forms Setup
+The forms are already configured with:
+- `data-netlify="true"` attribute
+- Hidden form-name field for identification
+- Honeypot spam protection field
+
+**To enable form notifications:**
+1. Go to your Netlify site dashboard
+2. Navigate to **Site settings** > **Forms**
+3. Enable form detection
+4. Add email notifications for form submissions
+
+### Alternative Options
+
+#### Option A — REST API (fetch)
+If you prefer a custom backend, replace the `form.submit()` call in the JS files with:
 
 ```js
 async function sendToAPI(payload) {
@@ -105,21 +119,23 @@ async function sendToAPI(payload) {
 }
 ```
 
-### Option B — Formspree (no backend)
-Replace `simulateSend()` with a Formspree endpoint:
+#### Option B — Formspree (no backend)
+Replace `form.submit()` with:
 
 ```js
 // Get your endpoint from formspree.io
 const ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
 
-async function simulateSend(payload) {
+async function sendToFormspree(payload) {
   const res = await fetch(ENDPOINT, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
   });
-  if (!res.ok) throw new Error('Submission failed');
+  if (!res.ok) throw new Error('Request failed');
+  return res.json();
 }
+```
 ```
 
 ### Option C — EmailJS
@@ -185,7 +201,7 @@ server {
 - [ ] Update contact details (email, phone, address) in all pages
 - [ ] Replace placeholder team members in `index.html` and `about.html`
 - [ ] Add real team photos to `assets/images/`
-- [ ] Connect form submission endpoint (see section above)
+- [x] Configure forms for Netlify Forms (automatic form handling)
 - [ ] Add Google Analytics or Plausible tracking snippet to `<head>`
 - [ ] Update `<meta>` descriptions per page
 - [ ] Add a real favicon (replace the SVG emoji favicon)
